@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup(vim.tbl_map(function(module) return { import = 'ds_omega.config.' .. module.import } end, {
   { import = 'Assistance' },
+  { import = 'Architecturing' },
   { import = 'Commands' },
   { import = 'Completion' },
   { import = 'Editing' },
