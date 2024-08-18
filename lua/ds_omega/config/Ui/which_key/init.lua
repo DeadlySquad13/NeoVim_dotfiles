@@ -1,6 +1,7 @@
 return {
   'folke/which-key.nvim',
   enabled = true,
+  version = "2.x",
 
   init = function()
     vim.o.timeout = true
