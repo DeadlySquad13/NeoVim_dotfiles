@@ -1,6 +1,8 @@
 return {
   'rmagatti/auto-session',
 
+  lazy = false,
+
   opts = {
     log_level = 'info',
     auto_session_enable_last_session = false,
