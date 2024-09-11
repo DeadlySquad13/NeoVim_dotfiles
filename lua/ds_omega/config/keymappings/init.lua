@@ -492,7 +492,7 @@ local minifiles_toggle = function(...)
     if not MiniFiles.close() then MiniFiles.open(...) end
 end
 
-local nmode_mappings = merge(common_mappings, merge(nxmode_mappings, {
+local nmode_mappings = merge(common_mappings, merge(nxmode_mappings, merge (require('ds_omega.config.keymappings.tab').mappings, {
     name = 'Main',
     -- a = a_mappings,
     -- b = b_mappings,
@@ -534,7 +534,7 @@ local nmode_mappings = merge(common_mappings, merge(nxmode_mappings, {
     ['<leader>'] = leader_mappings,
 
     ['-'] = { minifiles_toggle, 'Navigate through files' },
-}))
+})))
 
 -- vim.cmd([[:QuickScopeToggle<cr>:execute "normal \<Plug>Lightspeed_f"<cr>]])
 

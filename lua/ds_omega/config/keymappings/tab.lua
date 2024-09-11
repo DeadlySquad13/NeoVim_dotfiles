@@ -11,6 +11,18 @@ end
 
 local Tab = {}
 
+Tab.mappings = {
+    [keymappings.next_global] = {
+        t = { tab 'next', 'Next Tab' },
+    },
+    [keymappings.previous_global] = {
+        t = { tab 'previous', 'Previous Tab' },
+    },
+    ['<Leader>c'] = {
+      t = { tab 'new', 'Create new Tab' }
+    },
+}
+
 Tab.hydra = Hydra({
     name = 'Tabs',
     config = {
