@@ -102,6 +102,18 @@ if not vim.tbl_isempty(file_browser_extension) then
     })
 end
 
+local cabinet_extension = telescope_extensions.cabinet
+if not vim.tbl_isempty(cabinet_extension) then
+    navigation_mappings = vim.tbl_extend("force", navigation_mappings, {
+        d = {
+            function()
+                cabinet_extension.cabinet({})
+            end,
+            'Cabinet Drawers',
+        },
+    })
+end
+
 -- Must be last to overwrite everything!
 local search_tabs_is_available, search_tabs = prequire('search')
 
