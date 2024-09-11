@@ -31,7 +31,12 @@ local navigation_mappings = {
         'Buffers',
     },
 
-    -- s = {
+    s = {
+        telescope_builtin.git_status,
+        'Git Status (changed files)',
+    },
+
+    -- S = {
     --   require('session-lens').search_session()
     --   'Session search',
     -- },
