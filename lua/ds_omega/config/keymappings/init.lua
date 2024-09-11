@@ -48,14 +48,7 @@ local function get_default_branch_name()
 	return res.code == 0 and 'main' or 'master'
 end
 
--- Diff against local master branch
-vim.keymap.set(
-	'n',
-	',hm',
-	function() vim.cmd('DiffviewOpen ' .. get_default_branch_name()) end,
-	{ desc = 'Diff against master' }
-)
-
+-- TODO: Move to separate file.
 -- Be careful not to overlap with diagnostics severity keymappings.
 local diff_mappings = {
     d = { cmd '.DiffviewFileHistory --follow %', 'Line diff history' },
@@ -65,8 +58,12 @@ local diff_mappings = {
 
     s = { cmd 'DiffviewOpen', 'Repo diff (aka git Status)' },
     l = {
-        l = { cmd('DiffviewOpen HEAD..origin/' .. get_default_branch_name()), 'Diff against origin/main' },
+        l = { cmd('DiffviewOpen ' .. get_default_branch_name()), 'Diff local remote main' },
+        L = { cmd('DiffviewOpen HEAD..origin/' .. get_default_branch_name()), 'Diff against remote origin/main' },
     },
+
+    n = { cmd 'diffget', 'Diff get' },
+    c = { cmd 'diffput', 'Diff put' },
 }
 
 local xmode_diff_mappings = {
