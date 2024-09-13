@@ -376,18 +376,30 @@ local nxmode_mappings = {
 
 -- Mostly jumps and textobjects that are usable in n, x and o modes.
 local common_mappings = vim.tbl_extend('error', change_buffer_mappings, {
-    w = { "<Cmd>lua require('spider').motion('w')<Cr>", 'CamelCase next Word' },
-    W = { "<Plug>(smartword-w)", 'Smart next Word' },
+    -- w = { "<Cmd>lua require('spider').motion('w')<Cr>", 'CamelCase next Word' },
+    -- W = { "<Plug>(smartword-w)", 'Smart next Word' },
     -- b = { '<Plug>(smartword-b)', 'b' },
     -- e = { '<Plug>(smartword-e)', 'e' },
-    gd = { '<Plug>(smartword-ge)', 'Smart ge' },
+    
+    b = { '<Plug>(smartword-b)', 'Smart b (word backward)' },
+    ['<S-b>'] = { "<Cmd>lua require('spider').motion('b')<Cr>", 'CamelCase word backward' },
 
+    -- 'o' is `g` in our layout
+    -- 'd' is `e` in our layout
+    -- So it's like `ge` default keymapping.
+    o = {
+        d = { '<Plug>(smartword-ge)', 'Smart ge (backward to the End of the word)' },
+        ['<S-d>'] = { "<Cmd>lua require('spider').motion('ge')<Cr>", 'CamelCase backward to the End of word' },
+    },
+
+    -- TODO: Make these mappings work on notebooks.
     -- Make default layout more ergonomic.
     -- H = { '^', 'Go to the beginning of the line' },
     -- J = { '}', 'Go one paragraph down' },
     -- K = { '{', 'Go one paragraph up' },
     -- L = { '$', 'Go to the end of the line' },
-    -- ['}'] = { 'J', 'Join lines' },
+    -- TODO: Make as a fallback to TreeSJ
+    ['}'] = { 'J', 'Join lines' },
 
     ['^'] = { 'H', 'Move cursor to the top of the screen' },
     ['$'] = { 'L', 'Move cursor to the bottom of the screen' },
@@ -422,8 +434,7 @@ local common_mappings = vim.tbl_extend('error', change_buffer_mappings, {
     s = vim.tbl_extend('error', replace_mappings, { 'r', 'Replace' }),
     -- n = { 'x', 'Cut' },
     -- t = { 's', 'Surround' },
-    -- A = { '<Plug>(smartword-w)', 'Smart next Word' }, -- May be swapped with A as smartword is like extended version of W motion.
-    -- A = { 'W', 'Next Word' }, -- TODO: VACANT!
+    A = { "<Cmd>lua require('spider').motion('w')<Cr>", 'CamelCase next word' },
     -- i = { 'm', 'Mark' },
     -- h = { 'f', 'Find' },
     -- j = { 'q', 'Record macro' },
