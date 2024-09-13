@@ -41,35 +41,6 @@ local comment_mappings = {
     },
 }
 
-local function get_default_branch_name()
-	local res = vim
-		.system({ 'git', 'rev-parse', '--verify', 'main' }, { capture_output = true })
-		:wait()
-	return res.code == 0 and 'main' or 'master'
-end
-
--- TODO: Move to separate file.
--- Be careful not to overlap with diagnostics severity keymappings.
-local diff_mappings = {
-    d = { cmd '.DiffviewFileHistory --follow %', 'Line diff history' },
-
-    h = { cmd 'DiffviewFileHistory', 'Repo diff history' },
-    f = { cmd 'DiffviewFileHistory --follow %', 'File diff history' },
-
-    s = { cmd 'DiffviewOpen', 'Repo diff (aka git Status)' },
-    l = {
-        l = { cmd('DiffviewOpen ' .. get_default_branch_name()), 'Diff local remote main' },
-        L = { cmd('DiffviewOpen HEAD..origin/' .. get_default_branch_name()), 'Diff against remote origin/main' },
-    },
-
-    n = { cmd 'diffget', 'Diff get' },
-    c = { cmd 'diffput', 'Diff put' },
-}
-
-local xmode_diff_mappings = {
-    d = { "<Esc><Cmd>'<,'>DiffviewFileHistory --follow %<Cr>", 'Visual selection diff history' },
-}
-
 local e_mappings = {
     name = 'Edit',
     e = { cmd 'ChooseAndEditConfigs', 'Choose and Edit configs' },
@@ -301,12 +272,14 @@ local buffer_mappings, change_buffer_mappings = buffer_mappings_module[1], buffe
 
 local marks_keymappings = require("ds_omega.config.keymappings.marks")
 
+local diff_keymappings = require("ds_omega.config.keymappings.diff")
+
 local leader_mappings = {
     name = 'Leader',
     -- a = a_mappings,
     b = buffer_mappings,
     c = comment_mappings,
-    d = diff_mappings,
+    d = diff_keymappings.keymappings.n,
     e = e_mappings,
     f = vim.tbl_extend('error', file_mappings, special_yank_mappings),
     g = go_mappings,
@@ -545,7 +518,7 @@ local xmode_mappings = merge(common_mappings, merge(nxmode_mappings, merge(oxmod
         -- a = a_mappings,
         -- b = buffer_mappings,
         c = comment_mappings,
-        d = xmode_diff_mappings,
+        d = diff_keymappings.keymappings.x,
         -- e = e_mappings,
         f = special_yank_mappings,
         -- g = go_mappings,
