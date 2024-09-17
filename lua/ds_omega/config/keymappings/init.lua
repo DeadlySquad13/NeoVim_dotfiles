@@ -41,35 +41,6 @@ local comment_mappings = {
     },
 }
 
-local function get_default_branch_name()
-	local res = vim
-		.system({ 'git', 'rev-parse', '--verify', 'main' }, { capture_output = true })
-		:wait()
-	return res.code == 0 and 'main' or 'master'
-end
-
--- TODO: Move to separate file.
--- Be careful not to overlap with diagnostics severity keymappings.
-local diff_mappings = {
-    d = { cmd '.DiffviewFileHistory --follow %', 'Line diff history' },
-
-    h = { cmd 'DiffviewFileHistory', 'Repo diff history' },
-    f = { cmd 'DiffviewFileHistory --follow %', 'File diff history' },
-
-    s = { cmd 'DiffviewOpen', 'Repo diff (aka git Status)' },
-    l = {
-        l = { cmd('DiffviewOpen ' .. get_default_branch_name()), 'Diff local remote main' },
-        L = { cmd('DiffviewOpen HEAD..origin/' .. get_default_branch_name()), 'Diff against remote origin/main' },
-    },
-
-    n = { cmd 'diffget', 'Diff get' },
-    c = { cmd 'diffput', 'Diff put' },
-}
-
-local xmode_diff_mappings = {
-    d = { "<Esc><Cmd>'<,'>DiffviewFileHistory --follow %<Cr>", 'Visual selection diff history' },
-}
-
 local e_mappings = {
     name = 'Edit',
     e = { cmd 'ChooseAndEditConfigs', 'Choose and Edit configs' },
@@ -301,12 +272,14 @@ local buffer_mappings, change_buffer_mappings = buffer_mappings_module[1], buffe
 
 local marks_keymappings = require("ds_omega.config.keymappings.marks")
 
+local diff_keymappings = require("ds_omega.config.keymappings.diff")
+
 local leader_mappings = {
     name = 'Leader',
     -- a = a_mappings,
     b = buffer_mappings,
     c = comment_mappings,
-    d = diff_mappings,
+    d = diff_keymappings.keymappings.n,
     e = e_mappings,
     f = vim.tbl_extend('error', file_mappings, special_yank_mappings),
     g = go_mappings,
@@ -403,18 +376,30 @@ local nxmode_mappings = {
 
 -- Mostly jumps and textobjects that are usable in n, x and o modes.
 local common_mappings = vim.tbl_extend('error', change_buffer_mappings, {
-    w = { "<Cmd>lua require('spider').motion('w')<Cr>", 'CamelCase next Word' },
-    W = { "<Plug>(smartword-w)", 'Smart next Word' },
+    -- w = { "<Cmd>lua require('spider').motion('w')<Cr>", 'CamelCase next Word' },
+    -- W = { "<Plug>(smartword-w)", 'Smart next Word' },
     -- b = { '<Plug>(smartword-b)', 'b' },
     -- e = { '<Plug>(smartword-e)', 'e' },
-    gd = { '<Plug>(smartword-ge)', 'Smart ge' },
+    
+    b = { '<Plug>(smartword-b)', 'Smart b (word backward)' },
+    ['<S-b>'] = { "<Cmd>lua require('spider').motion('b')<Cr>", 'CamelCase word backward' },
 
+    -- 'o' is `g` in our layout
+    -- 'd' is `e` in our layout
+    -- So it's like `ge` default keymapping.
+    o = {
+        d = { '<Plug>(smartword-ge)', 'Smart ge (backward to the End of the word)' },
+        ['<S-d>'] = { "<Cmd>lua require('spider').motion('ge')<Cr>", 'CamelCase backward to the End of word' },
+    },
+
+    -- TODO: Make these mappings work on notebooks.
     -- Make default layout more ergonomic.
     -- H = { '^', 'Go to the beginning of the line' },
     -- J = { '}', 'Go one paragraph down' },
     -- K = { '{', 'Go one paragraph up' },
     -- L = { '$', 'Go to the end of the line' },
-    -- ['}'] = { 'J', 'Join lines' },
+    -- TODO: Make as a fallback to TreeSJ
+    ['}'] = { 'J', 'Join lines' },
 
     ['^'] = { 'H', 'Move cursor to the top of the screen' },
     ['$'] = { 'L', 'Move cursor to the bottom of the screen' },
@@ -449,8 +434,7 @@ local common_mappings = vim.tbl_extend('error', change_buffer_mappings, {
     s = vim.tbl_extend('error', replace_mappings, { 'r', 'Replace' }),
     -- n = { 'x', 'Cut' },
     -- t = { 's', 'Surround' },
-    -- A = { '<Plug>(smartword-w)', 'Smart next Word' }, -- May be swapped with A as smartword is like extended version of W motion.
-    -- A = { 'W', 'Next Word' }, -- TODO: VACANT!
+    A = { "<Cmd>lua require('spider').motion('w')<Cr>", 'CamelCase next word' },
     -- i = { 'm', 'Mark' },
     -- h = { 'f', 'Find' },
     -- j = { 'q', 'Record macro' },
@@ -545,7 +529,7 @@ local xmode_mappings = merge(common_mappings, merge(nxmode_mappings, merge(oxmod
         -- a = a_mappings,
         -- b = buffer_mappings,
         c = comment_mappings,
-        d = xmode_diff_mappings,
+        d = diff_keymappings.keymappings.x,
         -- e = e_mappings,
         f = special_yank_mappings,
         -- g = go_mappings,
