@@ -49,7 +49,7 @@ local navigation_mappings = {
         telescope_builtin.help_tags,
         'Help tags',
     },
-    t = {
+    ['<S-t>'] = {
         telescope_builtin.treesitter,
         'Treesitter',
     },
@@ -110,6 +110,16 @@ if not vim.tbl_isempty(cabinet_extension) then
                 cabinet_extension.cabinet({})
             end,
             'Cabinet Drawers',
+        },
+    })
+end
+
+local tabs_extension = telescope_extensions['telescope-tabs']
+if not vim.tbl_isempty(tabs_extension) then
+    navigation_mappings = vim.tbl_extend("error", navigation_mappings, {
+        t = {
+            tabs_extension.list_tabs,
+            'Tabs',
         },
     })
 end
