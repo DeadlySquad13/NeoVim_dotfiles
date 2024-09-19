@@ -18,9 +18,9 @@ Tab.mappings = {
     [keymappings.previous_global] = {
         t = { tab 'previous', 'Previous Tab' },
     },
-    ['<Leader>c'] = {
+    [keymappings.create] = {
       t = { tab 'new', 'Create new Tab' }
-    },
+    }
 }
 
 Tab.hydra = Hydra({

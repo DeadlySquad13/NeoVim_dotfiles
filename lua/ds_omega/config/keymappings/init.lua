@@ -10,6 +10,8 @@ local merge, cmd = utils.merge, utils.cmd
 
 local CONSTANTS = require('ds_omega.config.keymappings._common.constants')
 local KEY = CONSTANTS.KEY
+local leader_left = CONSTANTS.keymappings.leader_left
+local leader_right = CONSTANTS.keymappings.leader_right
 local next = CONSTANTS.keymappings.next
 local previous = CONSTANTS.keymappings.previous
 local around = CONSTANTS.keymappings.around
@@ -296,7 +298,7 @@ local leader_mappings = {
     [':'] = { 'mtO<Esc>`t', 'Create a new line above the current', },
     p = special_paste_mappings,
     q = q_leader_mappings,
-    r = require("ds_omega.config.keymappings.replace"),
+    rr = require("ds_omega.config.keymappings.replace"),
     s = session_mappings,
     t = toggle_mappings,
     -- u = u_mappings,
@@ -399,7 +401,7 @@ local common_mappings = vim.tbl_extend('error', change_buffer_mappings, {
     -- K = { '{', 'Go one paragraph up' },
     -- L = { '$', 'Go to the end of the line' },
     -- TODO: Make as a fallback to TreeSJ
-    ['}'] = { 'J', 'Join lines' },
+    -- ['}'] = { 'J', 'Join lines' },
 
     ['^'] = { 'H', 'Move cursor to the top of the screen' },
     ['$'] = { 'L', 'Move cursor to the bottom of the screen' },
@@ -410,7 +412,7 @@ local common_mappings = vim.tbl_extend('error', change_buffer_mappings, {
     -- [':'] = {
     --     name = 'Alternate',
     -- },
-    ['r'] = { ':', 'Enter command line mode' },
+    ['rr'] = { ':', 'Enter command line mode' },
     -- Swap mark jumps.
     ["'"] = { '`', 'Jump to position' },
     ['`'] = { "'", 'Jump to position linewise' },

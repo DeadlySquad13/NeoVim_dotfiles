@@ -6,7 +6,12 @@ return {
     local leap_settings = require('ds_omega.config.Navigation.leap.settings')
 
     return {
-      keys = { f = 'h', F = 'H', t = 'k', T = 'K' },
+      keys = {
+        -- Rationale: `f` in most cases used for movement so it won't be that
+        -- bad if it's on the same hand as actions.
+        f = 'w', F = 'W',
+        t = 'k', T = 'K',
+      },
       labeled_modes = 'vo',
       multiline = false,
       opts = {

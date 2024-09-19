@@ -8,7 +8,13 @@ CONSTANTS.KEY = {
   backslash = [[\]],
 }
 
+local leader_left = 'r'
+local leader_right = 'h'
+
 CONSTANTS.keymappings = {
+  leader_left = leader_left,
+  leader_right = leader_right,
+
   inside = 'q',
   around = 'e',
 
@@ -23,6 +29,8 @@ CONSTANTS.keymappings = {
   -- on.
   next_global = ']',
   previous_global = '[',
+
+  create = leader_right..'c',
 }
 
 return CONSTANTS

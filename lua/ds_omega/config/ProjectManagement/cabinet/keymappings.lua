@@ -21,8 +21,8 @@ return {
     [keymappings.previous_global] = {
       c = { cabinet.drawer_previous, 'Previous drawer' }
     },
-    ['<Leader>c'] = {
-      n = { Drawer 'New', 'Create New drawer' }
+    [keymappings.create] = {
+      d = { Drawer 'New', 'Create New drawer' }
     }
   }
 }
