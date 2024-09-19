@@ -12,6 +12,17 @@ local function get_default_branch_name()
 	return res.code == 0 and 'main' or 'master'
 end
 
+local function get_feature_branch_name()
+	local res = vim
+		.system({ 'git', 'branch', '--show-current' }, { capture_output = true })
+		:wait()
+
+    -- Stdout has \n at the end.
+    local current_branch_name = string.sub(res.stdout, 1, -2)
+
+	return 'feature/'..current_branch_name
+end
+
 Diff.keymappings = {
     -- Be careful not to overlap with diagnostics severity keymappings.
     n = {
@@ -24,6 +35,8 @@ Diff.keymappings = {
         l = {
             l = { cmd('DiffviewOpen ' .. get_default_branch_name()), 'Diff local remote main' },
             L = { cmd('DiffviewOpen HEAD..origin/' .. get_default_branch_name()), 'Diff against remote origin/main' },
+            f = { cmd('DiffviewOpen ' .. get_feature_branch_name()), 'Diff local feature branch' },
+            F = { cmd('DiffviewOpen HEAD..origin/' .. get_feature_branch_name()), 'Diff against remote feature branch' },
         },
 
         n = { cmd 'diffget', 'Diff get' },
