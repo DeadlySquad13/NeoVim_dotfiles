@@ -21,7 +21,9 @@ CONSTANTS.keymappings = {
   inside_additional = 'Q',
   around_additional = 'E',
 
-  -- Mostly used for textobjects and navigation in buffer.
+  -- Mostly used for local keymappings: 
+  -- - textobjects and navigation in buffer.
+  -- - in specific modes.
   next = 'y',
   previous = '"',
 
@@ -32,5 +34,9 @@ CONSTANTS.keymappings = {
 
   create = leader_right..'c',
 }
+
+-- About global and local keymappings: go to next buffer - global keymapping.
+-- But if we're already in buffer mappings key branch or in a buffer
+-- mode - go to next will be local in this context.
 
 return CONSTANTS

@@ -3,10 +3,14 @@ local Hydra = require('hydra')
 local cmd = require('hydra.keymap-util').cmd
 local pcmd = require('hydra.keymap-util').pcmd
 
+local keymappings = require("ds_omega.config.keymappings._common.constants").keymappings
+
 local common_keymappings = {
     -- Navigation.
     h = { cmd 'BufferLineCyclePrev', 'Previous buffer' },
     l = { cmd 'BufferLineCycleNext', 'Next buffer' },
+    [keymappings.previous] = { cmd 'BufferLineCyclePrev', 'Previous buffer' },
+    [keymappings.next] = { cmd 'BufferLineCycleNext', 'Next buffer' },
     -- Moving buffers.
     H = { cmd 'BufferLineMovePrev', 'Move left' },
     L = { cmd 'BufferLineMoveNext', 'Move right' },
@@ -50,7 +54,7 @@ return {
         name = 'Buffer',
         [require('ds_omega.config.keymappings._common.constants').transitive_catalizator] = {
             activate_buffer_hydra,
-            'Activate window mode'
+            'Activate buffer mode'
         },
     }),
     {

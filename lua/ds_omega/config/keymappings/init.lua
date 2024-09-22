@@ -278,8 +278,9 @@ local diff_keymappings = require("ds_omega.config.keymappings.diff")
 
 local leader_mappings = {
     name = 'Leader',
-    -- a = a_mappings,
-    b = buffer_mappings,
+    a = buffer_mappings,
+    -- Was inconvenient to press.
+    -- b = buffer_mappings,
     c = comment_mappings,
     d = diff_keymappings.keymappings.n,
     e = e_mappings,
