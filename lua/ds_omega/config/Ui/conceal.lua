@@ -1,5 +1,5 @@
 return {
-  'DeadlySquad13/conceal.nvim',
+  'Jxstxs/conceal.nvim',
   dependencies = 'nvim-treesitter/nvim-treesitter',
   opts = {
       --[[ ['language'] = {

@@ -26,6 +26,7 @@ require('lazy').setup(vim.tbl_map(function(module) return { import = 'ds_omega.c
   { import = 'Notebooks' },
   { import = 'Lsp' },
   { import = 'Snippets' },
+  { import = 'SearchAndReplace' },
   { import = 'Testing' },
   { import = 'Navigation' },
   { import = 'NeovimDevelopment' },

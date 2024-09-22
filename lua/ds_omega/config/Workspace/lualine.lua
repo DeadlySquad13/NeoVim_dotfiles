@@ -94,6 +94,23 @@ return {
                 lualine_a = { recorder_is_available and recorder.displaySlots or nil },
                 lualine_b = {
                     'branch',
+                    --[[ {
+                        'mode',
+                        fmt = function(mode)
+                            if vim.b['visual_multi'] then
+                                return mode .. ' - MULTI'
+                            end
+                        end
+                    }, ]]
+                    -- Reference: https://github.com/nvim-lualine/lualine.nvim/issues/951#issuecomment-1513861877
+                    {
+                        function()
+                            if vim.b['visual_multi'] then
+                                local ret = vim.api.nvim_exec2('call b:VM_Selection.Funcs.infoline()', { output = true })
+                                return string.match(ret.output, 'M.*')
+                            end
+                        end
+                    },
                     {
                         empty,
                         color = "lualine_c_normal",
