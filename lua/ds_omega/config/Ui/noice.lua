@@ -1,6 +1,6 @@
 return {
   'folke/noice.nvim',
-  enabled = false,
+  enabled = true,
 
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries.
@@ -18,6 +18,13 @@ return {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
+      },
+
+      -- Conflicts with lsp_signature.
+      -- TODO: Find out how it looks and compare
+      -- what should be enabled.
+      signature = {
+        enabled = false,
       },
     },
     -- You can enable a preset for easier configuration.
