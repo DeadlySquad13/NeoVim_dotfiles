@@ -5,9 +5,9 @@ if not lspconfig_is_available then
   return
 end
 
-local server_configurations = require('ds_omega.config.Lsp.server_configurations')
+local server_configurations = require('ds_omega.config.Lsp.core.server_configurations')
 local default_server_configuration = require(
-  'ds_omega.config.Lsp.server_configurations.default'
+  'ds_omega.config.Lsp.core.server_configurations.default'
 )
 
 vim.diagnostic.config({

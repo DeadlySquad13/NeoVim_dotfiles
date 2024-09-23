@@ -1,4 +1,4 @@
--- local lsp_handlers = require('ds_omega.layers.Lsp.handlers')
+-- local lsp_handlers = require('ds_omega.config.Lsp.core.handlers')
 
 return {
   settings = {

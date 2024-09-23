@@ -15,7 +15,7 @@ create_user_command(
   function(ctx)
     local severity = SEVERITY[ctx.args]
 
-    require('ds_omega.layers.Lsp.handlers.filter_diagnostics_by_severity.utils').set_minimum_diagnostics_severity(severity)
+    require('ds_omega.config.Lsp.core.handlers.filter_diagnostics_by_severity.utils').set_minimum_diagnostics_severity(severity)
   end,
   {
     nargs = 1,

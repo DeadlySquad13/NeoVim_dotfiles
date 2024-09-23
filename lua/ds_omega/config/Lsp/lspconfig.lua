@@ -33,7 +33,7 @@ return {
 
     local custom_server_configurations = {}
     for _, server_name in ipairs(servers_with_custom_configurations) do
-      custom_server_configurations[server_name] = require('ds_omega.config.Lsp.server_configurations' .. '.' .. server_name)
+      custom_server_configurations[server_name] = require('ds_omega.config.Lsp.core.server_configurations' .. '.' .. server_name)
     end
 
     return custom_server_configurations
@@ -50,7 +50,7 @@ return {
     local server_configurations = opts
 
     local default_server_configuration = require(
-      'ds_omega.config.Lsp.server_configurations.default'
+      'ds_omega.config.Lsp.core.server_configurations.default'
     )
 
     vim.diagnostic.config({

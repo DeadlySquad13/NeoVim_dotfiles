@@ -2,5 +2,5 @@ return {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
 
-    -- See 'layers.Lsp.handlers.on_attach'
+    -- See 'config.Lsp.core.handlers.on_attach'
 }

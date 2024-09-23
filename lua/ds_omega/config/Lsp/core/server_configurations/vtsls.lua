@@ -1,4 +1,4 @@
-local lsp_handlers = require('ds_omega.layers.Lsp.handlers')
+local lsp_handlers = require('ds_omega.config.Lsp.core.handlers')
 
 local function setup_vtscs_keymappings(_, bufnr)
   local opts = { silent = true }

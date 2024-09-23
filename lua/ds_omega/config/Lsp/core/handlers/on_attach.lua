@@ -1,8 +1,8 @@
 local prequire = require('ds_omega.utils').prequire
 
-local setup_lsp_keymappings = require('ds_omega.layers.Lsp.handlers.setup_lsp_keymappings')
-local setup_symbol_highlight_under_cursor = require('ds_omega.layers.Lsp.handlers.setup_symbol_highlight_under_cursor')
-local setup_filter_diagnostics_by_severity = require('ds_omega.layers.Lsp.handlers.filter_diagnostics_by_severity')
+local setup_lsp_keymappings = require('ds_omega.config.Lsp.core.handlers.setup_lsp_keymappings')
+local setup_symbol_highlight_under_cursor = require('ds_omega.config.Lsp.core.handlers.setup_symbol_highlight_under_cursor')
+local setup_filter_diagnostics_by_severity = require('ds_omega.config.Lsp.core.handlers.filter_diagnostics_by_severity')
 
 local on_attach = function(client, bufnr)
   local filter_diagnostics_by_severity_keymappings = setup_filter_diagnostics_by_severity()
