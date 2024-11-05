@@ -14,6 +14,13 @@ return {
     },
     build = function() require("gitlab.server").build(true) end, -- Builds the Go binary
 
+    opts = {
+        reviewer_settings = {
+            diffview = {
+                imply_local = true,
+            },
+        },
+    },
     config = function(_, opts)
         require("gitlab").setup(opts)
     end,
