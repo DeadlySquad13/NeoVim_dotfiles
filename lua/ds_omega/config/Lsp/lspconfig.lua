@@ -15,6 +15,8 @@ return {
       -- * Web Development.
       -- 'tsserver',
       'vtsls',
+      'cssmodules_ls',
+      'somesass_ls',
       'emmet_language_server',
       'cssls',
       'html',
@@ -97,6 +99,13 @@ return {
     end
 
     local lsp_server_name_to_filetypes = {
+      cssmodules_ls = {
+        -- For postcss.
+        -- 'css',
+        'scss',
+        'sass',
+      },
+      somesass_ls = { 'sass' },
       cssls = { 'css', 'scss', 'less' },
       eslint = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
       emmet_language_server = {
