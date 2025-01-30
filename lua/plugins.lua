@@ -37,7 +37,7 @@ require('lazy').setup(vim.tbl_map(function(module) return { import = 'ds_omega.c
   { import = 'WindowManagement' },
   { import = 'Workspace' },
   { import = 'Markdown' },
-  { import = 'Orgmode' },
+  -- { import = 'Orgmode' },
   { import = 'Writing' },
 
   -- # Meta layers.
