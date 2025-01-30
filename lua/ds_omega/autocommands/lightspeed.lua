@@ -9,7 +9,7 @@ end
 -- NOTE: clear option - clears previously created autocommands in augroup.
 
 -- ? Move this file to layers?
-local Lightspeed = create_augroup('LightspeedQuickscope', { clear = true })
+local Lightspeed = create_augroup('lightspeed-quickscope', { clear = true })
 
 local function disable_quick_scope()
   if vim.g.qs_enable == 1 then
