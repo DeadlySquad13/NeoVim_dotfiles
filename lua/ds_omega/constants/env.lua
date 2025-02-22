@@ -40,6 +40,7 @@ local nvim_constants = nvim_lua_namespace .. '/constants' -- TODO: Separate and 
 local nvim_lua_config = nvim_lua_namespace .. '/config'
 local nvim_keymappings = nvim_lua_namespace .. '/keymappings'
 local nvim_commands = nvim_lua_namespace .. '/commands'
+local nvim_modules = nvim_lua_namespace .. '/modules'
 local nvim_layers = nvim_lua_namespace .. '/layers'
 
 local goneovim_settings = user_config .. '/goneovim/settings.toml'
@@ -81,6 +82,8 @@ return {
   NVIM_LUA_CONFIG = nvim_lua_config,
   NVIM_KEYMAPPINGS = nvim_keymappings,
   NVIM_COMMANDS = nvim_commands,
+  -- Candidates to become plugins.
+  NVIM_MODULES = nvim_modules,
 
   NVIM_LAYERS = nvim_layers,
   NVIM_AFTER = nvim_after,
