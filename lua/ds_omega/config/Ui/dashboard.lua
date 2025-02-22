@@ -7,7 +7,7 @@ return {
   opts = function()
     local prequire = require('ds_omega.utils').prequire;
 
-    local choose_and_edit_configs = require('ds_omega.commands.choose_and_edit_configs');
+    local choose_and_edit_configs = require('ds_omega.modules.choose_and_edit_configs').choose_and_edit_configs;
 
     -- Possible extensions for dashboard:
     -- - more find file utils,
