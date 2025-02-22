@@ -1,5 +1,5 @@
 return {
-  "smilhey/cabinet.nvim",
+  "DeadlySquad13/cabinet.nvim",
 
   config = function()
     local cabinet = require("cabinet")
