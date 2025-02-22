@@ -8,7 +8,7 @@ if not ufo_is_available or not ufo then
     return
 end
 
-local LINES_VISIBLE_ON_ONE_VIEWPORT = 64
+local LINES_VISIBLE_ON_ONE_VIEWPORT = 100
 
 local function get_import_ranges(ranges)
     return vim.tbl_filter(function(range) return range.kind == 'imports' end, ranges)
