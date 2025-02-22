@@ -14,6 +14,10 @@ if exists('g:neovide')
     " nnoremap <silent> <C--> :set guifont=+<CR>
     " nnoremap <silent> <C-=> :set guifont=-<CR>
     nnoremap <silent> <A-Cr> :let g:neovide_fullscreen = !g:neovide_fullscreen<cr>
+
+    " Make Neovide tile on Windows with komorebi
+    " see: https://github.com/LGUG2Z/komorebi/issues/543
+    set title titlestring=neovide
 end
 
 if exists('g:fvim_loaded')
