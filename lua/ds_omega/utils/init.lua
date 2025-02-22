@@ -133,6 +133,7 @@ end
 
 local M = {
   -- # Core
+  -- Just reuses global prequire, left here for clarity in old modules.
   prequire = prequire,
 
   -- # Printing and loggin.
