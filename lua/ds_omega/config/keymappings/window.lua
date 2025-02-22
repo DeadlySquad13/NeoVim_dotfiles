@@ -28,7 +28,9 @@ Window.hydra = Hydra({
         -- hint = window_hint,
         config = {
             hint = {
-                border = 'rounded',
+                float_opts = {
+                    style = 'rounded',
+                },
                 offset = -1
             }
         },

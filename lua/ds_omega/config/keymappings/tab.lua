@@ -27,7 +27,9 @@ Tab.hydra = Hydra({
     name = 'Tabs',
     config = {
         hint = {
-            border = 'rounded',
+            float_opts = {
+                style = 'rounded',
+            },
             offset = -1
         }
     },

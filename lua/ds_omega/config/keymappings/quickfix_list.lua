@@ -24,7 +24,9 @@ QuickfixList.hydra = Hydra({
     name = 'Quickfix list',
     config = {
         hint = {
-            border = 'rounded',
+            float_opts = {
+                style = 'rounded',
+            },
             offset = -1
         }
     },
