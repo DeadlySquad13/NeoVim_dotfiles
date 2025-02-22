@@ -45,4 +45,6 @@ return {
   'r',
 
   'http', -- For http testing (rest.nvim).
+  
+  'nix',
 }
