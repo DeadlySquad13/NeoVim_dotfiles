@@ -12,3 +12,5 @@ require('general_settings')
 require('plugins')
 require('ds_omega.commands')
 require('ds_omega.autocommands')
+-- REFACTOR: Make them as small plugins and setup using Lazy.
+require('ds_omega.modules.choose_and_edit_configs').setup()
