@@ -39,7 +39,7 @@ function multi_normal(targets)
 end
 
 -- Usage:
-local create_user_command = require('ds_omega.commands.utils').create_user_command
+local create_user_command = require('ds_omega.utils.commands').create_user_command
 
 create_user_command(
   'MultiNormal',
