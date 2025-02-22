@@ -110,6 +110,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "1020869742ecb191f260818234517f4a1515cfe8" },
   "nvim-window": { "branch": "main", "commit": "93af78311e53919a0b13d1bf6d857880bb0b975d" },
   "nvim-yati": { "branch": "main", "commit": "df3dc06076c6fe20a1dcd8643e712af5c252d042" },
+  "orgmode": { "branch": "master", "commit": "9ec211c2a1245b61955fad7c1a5057745b5b05a7" },
   "other.nvim": { "branch": "create-file", "commit": "0a38468742df068c2e940992cf849895009a022f" },
   "otter.nvim": { "branch": "main", "commit": "21f042f4d1a9ff4788634ad76a10033eed13c7f2" },
   "persisted.nvim": { "branch": "main", "commit": "1a6e16e80ee59ddf720e9389729a4de4ab093587" },
